@@ -1,0 +1,62 @@
+{
+  "manifest_version": 2,
+  "name": "BeyondAddon",
+  "description": "This extension will remove the navigation bar of DnD Beyond character sheets. ",
+  "version": "1.0",
+
+  "permissions": [
+    "storage", "tabs", "activeTab", "<all_urls>", "declarativeContent"
+  ],
+
+  "background": {
+    "scripts": [
+      "background/background.js"
+    ],
+    "persistent": false
+  },
+
+  "browser_action":
+  {
+    "default_icon": "icons/icon.png",
+    "default_popup": "background/popup.html"
+  },
+
+  "commands": {
+    "toggle-actived": {
+      "suggested_key": {
+        "default": "Ctrl+B"
+      },
+      "description": "Toggle character view"
+    },
+    "open-search": {
+      "suggested_key": {
+        "default": "Ctrl+Space"
+      },
+      "description": "Open D&D Beyond Search-Bar"
+    }
+  },
+
+  "content_scripts": [
+    {
+      "matches": [
+        "http://www.dndbeyond.com/*/characters/*",
+        "https://www.dndbeyond.com/*/characters/*",
+        "http://dndbeyond.com/*/characters/*",
+        "https://dndbeyond.com/*/characters/*"
+      ],
+      "js": ["public/jquery.js", "scriptCharacter.js"],
+      "css": ["stylesCharacter.css"],
+      "run_at": "document_idle"
+    }, {
+      "matches": [
+        "http://www.dndbeyond.com/*",
+        "https://www.dndbeyond.com/*",
+        "http://dndbeyond.com/*",
+        "https://dndbeyond.com/*"
+      ],
+      "js": ["public/jquery.js", "scriptSearch.js"],
+      "css": ["stylesSearch.css"],
+      "run_at": "document_idle"
+    }
+  ]
+}
