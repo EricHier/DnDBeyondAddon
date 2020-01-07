@@ -1,0 +1,11 @@
+# Librarys
+/public/bulma.min.css
+/public/jquery.js
+/public/vue.js
+
+# Icons
+/icons/icon.png
+/icons/icon_inverted.png
+
+# Webstorm
+.idea
