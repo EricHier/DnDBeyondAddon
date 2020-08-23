@@ -16,6 +16,10 @@ function init () {
 
     var top = $("#mega-menu-target, .site-bar");
 
+    var sidebar = $(".ct-sidebar");
+    sidebar[0].style.setProperty('top', '0px', 'important');
+
+
     /*setTimeout(function(){
         top.css("display", "none");
         top.css("top", "0px");
